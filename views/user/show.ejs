@@ -1,0 +1,43 @@
+<div class="container">
+  <% if (user.id === session.User.id) { %>
+    <h2>Your Profile</h2>
+    <hr>
+  <% } %>
+
+  <h1><%= user.username %> </h1>
+  <p><%= user.email %> </p>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Following (<%= user.following.length %>)</h3>
+      <table class="table">
+        <tr>
+          <th>Username</th>
+        </tr>
+
+        <% _.each(user.following, function (user) { %>
+          <tr>
+            <td><a href="/user/show/<%= user.id %>"><%= user.username %></a></td>
+          </tr>
+        <% }) %>
+      </table>
+      
+    </div>
+  </div>
+
+
+  <% if (user.id !== session.User.id) { %>
+    <hr>
+    <% if (!user.isFollowed) { %>
+      <td><a href="/user/follow/<%= user.id %>" class="btn btn-success">Follow</a></td>
+    <% } %>
+
+    <% if (user.isFollowed) { %>
+      <td><a href="/user/unfollow/<%= user.id %>" class="btn btn-danger">Unfollow</a></td>
+    <% } %>
+    
+  <% } %>
+  
+</div>

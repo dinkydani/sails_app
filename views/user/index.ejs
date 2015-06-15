@@ -1,0 +1,44 @@
+<div class="container">
+  <h3>Users</h3>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Following</th>
+      <th>Follow</th>
+    </tr>
+
+    <% _.each(users, function (user) { %>
+      <tr data-id="<%= user.id %>" data-model="user">
+        <td><%= user.id %></td>
+        <td><a href="/user/show/<%= user.id %>"><%= user.username %></a></td>
+        <td><%= user.email %></td>
+        <td><%= user.following.length %></td>
+
+        <% if (!user.isFollowed) { %>
+          <td><a href="/user/follow/<%= user.id %>" class="btn btn-success">Follow</a></td>
+        <% } %>
+
+        <% if (user.isFollowed) { %>
+          <td><a href="/user/unfollow/<%= user.id %>" class="btn btn-danger">Unfollow</a></td>
+        <% } %>
+
+      </tr>
+    <% }) %>
+  </table>
+  
+  <% if (page === 1 && users.length >= limit) { %>
+    <a href="/user/?page=<%= (parseInt(page) + 1)%>">next</a>
+  <% } %>
+  <% if (page > 1 && page < lastPage) { %>
+    <a href="/user/?page=<%= (parseInt(page) - 1)%>">prev</a>
+    <a href="/user/?page=<%= (parseInt(page) + 1)%>">next</a>
+  <% } %>
+  <% if (page !== 1 && page === lastPage) { %>
+    <a href="/user/?page=<%= (parseInt(page) - 1)%>">prev</a>
+  <% } %>
+
+  <hr>
+
+</div>

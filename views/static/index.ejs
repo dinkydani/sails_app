@@ -1,0 +1,14 @@
+<div class="container">
+  <h1> Welcome to my Sails App! </h1>
+  
+  <% if (!session.authenticated) { %>
+    <a href="/signup" class="btn btn-primary">Sign Up!</a>
+    <a href="/login" class="btn btn-primary">Login</a>
+  <% } %>
+
+
+  <hr>
+
+  <a href="/user" class="btn btn-default">Show All Users</a>
+
+</div>
