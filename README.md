@@ -12,4 +12,4 @@ Sample [Sails.js](http://sailsjs.org) application with [MongoDB](http://mongodb.
 
 navgiate to [https://localhost:1337](http://localhost:1337)
 
-You'll need to create at sign up at least 1 user
+You'll need to sign up at least 1 user
